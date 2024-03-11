@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class ColorChange : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Material[] colors;
+    private MeshRenderer myRenderer;
+
+    private void Start()
     {
-        
+        myRenderer = GetComponent<MeshRenderer>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter(Collision collision)
     {
-        
+        if(collision.gameObject.CompareTag("Domino") || collision.gameObject.CompareTag("Player"))
+        {
+            int rand = Random.Range(0, colors.Length);
+            myRenderer.material = colors[rand];
+        }
     }
+
 }
