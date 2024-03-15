@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class PlaySounds : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private AudioSource audioSource;
+    public AudioClip audioClip;
+    public AudioClip jumpSound;
+
+    private void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter(Collision collision)
     {
-        
+        if(collision.gameObject.CompareTag("Jump"))
+            audioSource.PlayOneShot(jumpSound);
+        else
+            audioSource.PlayOneShot(audioClip);
     }
 }
