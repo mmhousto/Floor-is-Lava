@@ -10,8 +10,8 @@ public class DetectPlayer : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            rotateObject.spinSpeed = 180;
-            Invoke(nameof(StopSpinning), 4.5f);
+            rotateObject.spinSpeed = 90;
+            Invoke(nameof(StopSpinning), 2f);
         }
     }
 
