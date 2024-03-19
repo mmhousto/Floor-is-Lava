@@ -23,4 +23,22 @@ public class Flag : MonoBehaviour
             flag.transform.Translate(new Vector3 (0, yDelta, 0));
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            StartCoroutine(IncreaseMass(collision.rigidbody));
+        }
+    }
+
+    IEnumerator IncreaseMass(Rigidbody rb)
+    {
+        while(rb.mass <= 15)
+        {
+            rb.mass += 0.5f;
+            yield return new WaitForSeconds(0.5f);
+        }
+        
+    }
 }

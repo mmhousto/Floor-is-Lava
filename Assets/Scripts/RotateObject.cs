@@ -11,7 +11,11 @@ public class RotateObject : MonoBehaviour
 
     private void Start()
     {
-        if (physically == true) rb = GetComponent<Rigidbody>();
+        if (physically == true)
+        {
+            rb = GetComponent<Rigidbody>();
+            rb.AddTorque(axis * 250, ForceMode.Impulse);
+        }
     }
 
     private void Update()
@@ -27,7 +31,7 @@ public class RotateObject : MonoBehaviour
     {
         if (physically == true)
         {
-            rb.AddTorque(axis * spinSpeed, ForceMode.Impulse);
+            //rb.AddTorque(axis * spinSpeed, ForceMode.Impulse);
         }
     }
 }
